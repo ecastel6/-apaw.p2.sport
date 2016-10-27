@@ -15,6 +15,11 @@ public class Sport {
         this.sportName = sportName;
     }
 
+    public Sport(String sportName) {
+        super();
+        this.sportName = sportName;
+    }
+
     public int getId() {
         return id;
     }

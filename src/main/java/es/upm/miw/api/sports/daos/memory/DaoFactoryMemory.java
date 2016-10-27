@@ -1,31 +1,32 @@
 package es.upm.miw.api.sports.daos.memory;
 
 import es.upm.miw.api.sports.daos.DaoFactory;
-import es.upm.miw.api.sports.daos.ThemeDao;
-import es.upm.miw.api.sports.daos.VoteDao;
+import es.upm.miw.api.sports.daos.SportDao;
+import es.upm.miw.api.sports.daos.UserDao;
 
 public class DaoFactoryMemory extends DaoFactory {
 
-	private ThemeDao themeDao;
-	private VoteDao voteDao;
+    private UserDao userDao;
 
-	public DaoFactoryMemory() {
-	}
+    private SportDao sportDao;
 
-	@Override
-	public ThemeDao getThemeDao() {
-		if (themeDao == null) {
-			themeDao = new ThemeDaoMemory();
-		}
-		return themeDao;
-	}
+    public DaoFactoryMemory() {
+    }
 
-	@Override
-	public VoteDao getVoteDao() {
-		if (voteDao == null) {
-			voteDao = new VoteDaoMemory();
-		}
-		return voteDao;
-	}
+    @Override
+    public UserDao getUserDao() {
+        if (userDao == null) {
+            userDao = new UserDaoMemory();
+        }
+        return userDao;
+    }
+
+    @Override
+    public SportDao getSportDao() {
+        if (sportDao == null) {
+            sportDao = new SportDaoMemory();
+        }
+        return sportDao;
+    }
 
 }

@@ -45,7 +45,11 @@ public class User {
     public void setSports(List<Sport> sports) {
         this.sports = sports;
     }
-
+    
+    public void addSport(Sport sport){
+        sports.add(sport);
+    }
+    
     @Override
     public String toString() {
         return "User [id=" + id + ", nick=" + nick + ", email=" + email + "]";

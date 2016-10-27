@@ -3,6 +3,7 @@ package es.upm.miw.api.sports;
 import es.upm.miw.api.sports.api.SportsResource;
 import es.upm.miw.api.sports.api.UsersResource;
 import es.upm.miw.api.sports.exceptions.InvalidExistingSportException;
+import es.upm.miw.api.sports.exceptions.InvalidExistingUserException;
 import es.upm.miw.api.sports.exceptions.InvalidSportFieldException;
 import es.upm.miw.api.sports.exceptions.InvalidRequestException;
 import es.upm.miw.api.sports.exceptions.InvalidUserFieldException;
@@ -23,13 +24,14 @@ public class Dispatcher {
 
     public void doGet(HttpRequest request, HttpResponse response) {
         // **/users
-        if ("themes".equals(request.getPath())) {
+        if ("users".equals(request.getPath())) {
             response.setBody(userResource.userList().toString());
             // **/users/search?sport={id}
         } else if ("users".equals(request.paths()[0]) && "search".equals(request.paths()[1])
                 && (request.getParams().get("sport") != null)) {
             try {
-                response.setBody(userResource.userPlaySportList(request.getParams().get("sport").toString()));
+                response.setBody(userResource.nickSportList(request.getParams().get("sport")).toString());
+                
             } catch (Exception e) {
                 responseError(response, e);
             }
@@ -38,7 +40,7 @@ public class Dispatcher {
         }
     }
 
-    public void doPost(HttpRequest request, HttpResponse response) {
+    public void doPost(HttpRequest request, HttpResponse response) throws InvalidExistingUserException, InvalidSportFieldException {
         switch (request.getPath()) {
         // POST **/users body="nick:email"
         case "users":
