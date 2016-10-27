@@ -7,15 +7,12 @@ import es.upm.miw.api.sports.exceptions.InvalidSportFieldException;
 public class SportsResource {
 
     public void createSport(String sport) throws InvalidExistingSportException, InvalidSportFieldException {
-        if (sport==null || sport.isEmpty()) {
-            throw new InvalidSportFieldException("Sport cannot be empty or null");
-        } else 
-        {
-            if (!new SportController().createSport(sport)) {
-                throw new InvalidExistingSportException();
-            }
+        if (sport == null || sport.isEmpty()) {
+            throw new InvalidSportFieldException("Nombre de deporte nulo o vacío");
+        } else {
+            new SportController().createSport(sport);
         }
-        
+
     }
 
 }

@@ -1,13 +1,9 @@
 package es.upm.miw.api.sports.api;
 
 import es.upm.miw.api.sports.controllers.UserController;
-import es.upm.miw.api.sports.daos.DaoFactory;
-import es.upm.miw.api.sports.entities.User;
 import es.upm.miw.api.sports.exceptions.InvalidExistingUserException;
 import es.upm.miw.api.sports.exceptions.InvalidSportFieldException;
 import es.upm.miw.api.sports.exceptions.InvalidUserFieldException;
-import es.upm.miw.api.sports.wrappers.ListNickWrapper;
-import es.upm.miw.api.sports.wrappers.SportListWrapper;
 import es.upm.miw.api.sports.wrappers.UserListWrapper;
 
 public class UsersResource {
@@ -18,34 +14,26 @@ public class UsersResource {
     }
 
     public void createUser(String nick, String email) throws InvalidUserFieldException, InvalidExistingUserException {
-        if (nick==null || nick.isEmpty()) {
+        if (nick == null || nick.isEmpty()) {
             throw new InvalidUserFieldException("Invalid User");
-        } else 
-        if (email==null || email.isEmpty()) {
+        } else if (email == null || email.isEmpty()) {
             throw new InvalidUserFieldException("Invalid email");
-        } else 
-            if (!new UserController().createUser(nick, email)) {
-                throw new InvalidExistingUserException ();
-            }
-        
+        } else
+            new UserController().createUser(nick, email);
     }
-    
+
     // GET / users/search?sport=*
-    public ListNickWrapper nickSportList(String sport) throws InvalidSportFieldException {
-        if (sport==null || sport.isEmpty()) {
-            throw new InvalidSportFieldException("Invalid Param sport");
-        } else { 
+    public UserListWrapper nickSportList(String sport) throws InvalidSportFieldException {
+        if (sport == null || sport.isEmpty()) {
+            throw new InvalidSportFieldException("No indicó el deporte");
+        } else {
             return new UserController().nickSportList(sport);
         }
     }
-    
-    public void addSport(String userNick, String sportName) throws InvalidSportFieldException {
-        User user = DaoFactory.getFactory().getUserDao().findbyNick(userNick);
-//          sport = DaoFactory.getFactory().getSportDao().
-        
+
+    // PUT /users/{nick}/sport body=sportName
+    public void addSport(String nick, String sportName) throws InvalidSportFieldException, InvalidUserFieldException {
+        new UserController().addSport(nick, sportName);
+
     }
-
-
-    
-
 }

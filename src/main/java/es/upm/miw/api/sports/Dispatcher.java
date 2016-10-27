@@ -31,7 +31,7 @@ public class Dispatcher {
                 && (request.getParams().get("sport") != null)) {
             try {
                 response.setBody(userResource.nickSportList(request.getParams().get("sport")).toString());
-                
+
             } catch (Exception e) {
                 responseError(response, e);
             }
@@ -74,24 +74,24 @@ public class Dispatcher {
         // PUT users/{nick}/sports body="sportName"
         if ("users".equals(request.paths()[0]) && "sport".equals(request.paths()[2])) {
             String userNick = request.paths()[1];
-            try{
+            try {
                 userResource.addSport(userNick, request.getBody());
                 response.setStatus(HttpStatus.OK);
-            }catch (InvalidSportFieldException e){
+            } catch (Exception e) {
                 responseError(response, e);
             }
-            
+
         } else {
             responseError(response, new InvalidRequestException(request.getPath()));
         }
     }
 
-	public void doDelete(HttpRequest request, HttpResponse response) {
-		switch (request.getPath()) {
-		default:
-			responseError(response, new InvalidRequestException(request.getPath()));
-			break;
-		}
-	}
+    public void doDelete(HttpRequest request, HttpResponse response) {
+        switch (request.getPath()) {
+        default:
+            responseError(response, new InvalidRequestException(request.getPath()));
+            break;
+        }
+    }
 
 }

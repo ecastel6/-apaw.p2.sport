@@ -8,7 +8,6 @@ import es.upm.miw.api.sports.entities.User;
 import es.upm.miw.api.sports.exceptions.InvalidExistingUserException;
 import es.upm.miw.api.sports.exceptions.InvalidSportFieldException;
 import es.upm.miw.api.sports.exceptions.InvalidUserFieldException;
-import es.upm.miw.api.sports.wrappers.ListNickWrapper;
 import es.upm.miw.api.sports.wrappers.UserListWrapper;
 import es.upm.miw.api.sports.wrappers.UserWrapper;
 
