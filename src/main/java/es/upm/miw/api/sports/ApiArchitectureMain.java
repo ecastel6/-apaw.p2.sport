@@ -83,6 +83,11 @@ public class ApiArchitectureMain {
         request.setPath(IO.getIO().readString("Path"));
         this.showStatus();
     }
+    
+    public void body() {
+        request.setBody(IO.getIO().readString("Body"));
+        this.showStatus();
+    }
 
     public void addQueryParam() {
         String[] msgs = {"Nombre", "Valor"};
