@@ -2,11 +2,7 @@ package es.upm.miw.api.sports;
 
 import es.upm.miw.api.sports.api.SportsResource;
 import es.upm.miw.api.sports.api.UsersResource;
-import es.upm.miw.api.sports.exceptions.InvalidExistingSportException;
-import es.upm.miw.api.sports.exceptions.InvalidExistingUserException;
-import es.upm.miw.api.sports.exceptions.InvalidSportFieldException;
 import es.upm.miw.api.sports.exceptions.InvalidRequestException;
-import es.upm.miw.api.sports.exceptions.InvalidUserFieldException;
 import es.upm.miw.web.http.HttpRequest;
 import es.upm.miw.web.http.HttpResponse;
 import es.upm.miw.web.http.HttpStatus;

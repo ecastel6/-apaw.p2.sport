@@ -10,9 +10,8 @@ public class SportController {
         if (sport == null) {
             DaoFactory.getFactory().getSportDao().create(new Sport(sportName));
             return true;
-        } else 
+        } else
             return false;
-//            throw new InvalidExistingSportException();
     }
 
 }

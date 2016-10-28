@@ -6,7 +6,6 @@ import java.util.List;
 public class SportListWrapper {
     private List<String> nickList;
 
-    
     public SportListWrapper() {
         this.nickList = new ArrayList<>();
     }

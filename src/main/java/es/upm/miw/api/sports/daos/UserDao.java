@@ -7,5 +7,6 @@ import es.upm.miw.api.sports.entities.User;
 
 public interface UserDao extends GenericDao<User, Integer> {
     List<User> findNickbySport(Sport sport);
+
     User findbyNick(String userNick);
 }

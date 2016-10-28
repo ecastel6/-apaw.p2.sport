@@ -10,7 +10,7 @@ public class User {
     private String nick;
 
     private String email;
-    
+
     private List<Sport> sports;
 
     public User() {
@@ -19,7 +19,7 @@ public class User {
     public User(String nick, String email) {
         this.nick = nick;
         this.email = email;
-        this.sports=new ArrayList<Sport>();
+        this.sports = new ArrayList<Sport>();
     }
 
     public int getId() {
@@ -33,7 +33,7 @@ public class User {
     public String getNick() {
         return nick;
     }
-    
+
     public String getEmail() {
         return email;
     }
@@ -45,11 +45,11 @@ public class User {
     public void setSports(List<Sport> sports) {
         this.sports = sports;
     }
-    
-    public void addSport(Sport sport){
+
+    public void addSport(Sport sport) {
         sports.add(sport);
     }
-    
+
     @Override
     public String toString() {
         return "User [id=" + id + ", nick=" + nick + ", email=" + email + "]";

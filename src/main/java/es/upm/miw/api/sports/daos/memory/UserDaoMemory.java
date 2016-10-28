@@ -10,11 +10,11 @@ import es.upm.miw.api.sports.entities.User;
 
 public class UserDaoMemory extends GenericMemoryDao<User> implements UserDao {
 
-	public UserDaoMemory() {
-		this.setMap(new HashMap<Integer, User>());
-	}
+    public UserDaoMemory() {
+        this.setMap(new HashMap<Integer, User>());
+    }
 
-	@Override
+    @Override
     protected Integer getId(User entity) {
         return entity.getId();
     }
@@ -27,9 +27,9 @@ public class UserDaoMemory extends GenericMemoryDao<User> implements UserDao {
 
     @Override
     public List<User> findNickbySport(Sport sport) {
-        List <User> users = this.findAll();
-        List <User> selectedUsers = new LinkedList <>();
-        for (User user: users) {
+        List<User> users = this.findAll();
+        List<User> selectedUsers = new LinkedList<>();
+        for (User user : users) {
             if (user.getSports().contains(sport)) {
                 selectedUsers.add(user);
             }
@@ -37,11 +37,10 @@ public class UserDaoMemory extends GenericMemoryDao<User> implements UserDao {
         return selectedUsers;
     }
 
-
     @Override
     public User findbyNick(String userNick) {
-        List <User> nickList = this.findAll();
-        for (User nick:nickList) {
+        List<User> nickList = this.findAll();
+        for (User nick : nickList) {
             if (nick.getNick().equals(userNick)) {
                 return nick;
             }

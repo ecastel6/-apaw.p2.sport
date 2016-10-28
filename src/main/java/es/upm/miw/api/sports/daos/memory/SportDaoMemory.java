@@ -7,14 +7,14 @@ import es.upm.miw.api.sports.daos.SportDao;
 import es.upm.miw.api.sports.entities.Sport;
 
 public class SportDaoMemory extends GenericMemoryDao<Sport> implements SportDao {
-    
+
     public SportDaoMemory() {
-        this.setMap(new HashMap<Integer,Sport>());
+        this.setMap(new HashMap<Integer, Sport>());
     }
-    
+
     @Override
     public Sport findSportbyName(String sportName) {
-        List <Sport> sports = this.findAll();
+        List<Sport> sports = this.findAll();
         for (Sport sport : sports) {
             if (sport.getSportName().equals(sportName)) {
                 return sport;
@@ -31,6 +31,6 @@ public class SportDaoMemory extends GenericMemoryDao<Sport> implements SportDao 
     @Override
     protected void setId(Sport entity, Integer id) {
         entity.setId(id);
-        
+
     }
 }

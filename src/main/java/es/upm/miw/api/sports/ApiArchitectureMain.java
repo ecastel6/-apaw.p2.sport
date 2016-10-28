@@ -70,6 +70,7 @@ public class ApiArchitectureMain {
         request.setMethod(HttpMethod.POST);
         request.setPath("noPath");
         request.clearQueryParams();
+        request.setBody("");
         this.request();
 
     }
