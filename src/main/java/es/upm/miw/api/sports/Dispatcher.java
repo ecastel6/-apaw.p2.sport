@@ -40,7 +40,7 @@ public class Dispatcher {
         }
     }
 
-    public void doPost(HttpRequest request, HttpResponse response) throws InvalidExistingUserException, InvalidSportFieldException {
+    public void doPost(HttpRequest request, HttpResponse response) {
         switch (request.getPath()) {
         // POST **/users body="nick:email"
         case "users":
@@ -50,7 +50,7 @@ public class Dispatcher {
             try {
                 userResource.createUser(userNick, userEmail);
                 response.setStatus(HttpStatus.CREATED);
-            } catch (InvalidUserFieldException e) {
+            } catch (Exception e) {
                 this.responseError(response, e);
             }
             break;
@@ -60,7 +60,7 @@ public class Dispatcher {
             try {
                 sportResource.createSport(request.getBody());
                 response.setStatus(HttpStatus.CREATED);
-            } catch (InvalidExistingSportException e) {
+            } catch (Exception e) {
                 responseError(response, e);
             }
             break;

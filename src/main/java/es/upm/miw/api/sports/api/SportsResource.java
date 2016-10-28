@@ -9,10 +9,8 @@ public class SportsResource {
     public void createSport(String sport) throws InvalidExistingSportException, InvalidSportFieldException {
         if (sport == null || sport.isEmpty()) {
             throw new InvalidSportFieldException("Nombre de deporte nulo o vacío");
-        } else {
-            new SportController().createSport(sport);
+        } else if (!new SportController().createSport(sport)) {
+            throw new InvalidExistingSportException();
         }
-
     }
-
 }

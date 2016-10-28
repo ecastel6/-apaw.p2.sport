@@ -30,8 +30,9 @@ public class UserController {
         }
     }
 
-    public UserListWrapper nickSportList(String sport) {
+    public UserListWrapper nickSportList(String sportname) {
         UserListWrapper listNickWrapper = new UserListWrapper();
+        Sport sport = DaoFactory.getFactory().getSportDao().findSportbyName(sportname);
         List<User> listNick = DaoFactory.getFactory().getUserDao().findNickbySport(sport);
         for (User user : listNick) {
             listNickWrapper.addUserWrapper(new UserWrapper(user.getNick(), user.getEmail()));
